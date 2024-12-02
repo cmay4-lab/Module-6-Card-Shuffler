@@ -1,55 +1,48 @@
 public class Card {
-    private String rank;    // The card's rank from ace to king
-    private String suit;    // The card's suit (clubs, hearts, diamonds, spades)
+    private char rank;    // The card's rank from ace to king
+    private char suit;    // The card's suit (clubs, diamonds, hearts, spades)
 
     public Card() {
-        rank = "";
-        suit = "";
+        rank = '';
+        suit = '';
     }
 
-    public Card(String cardRank, String cardSuit) {
+    public Card(char cardRank, char cardSuit) {
         rank = cardRank;
         suit = cardSuit;
     }
 
-    public String getRank() {
+    public char getRank() {
         return rank;
     }
 
-    public String getSuit() {
+    public char getSuit() {
         return suit;
     }
 
-    private int getIntegerAttributeValues(String cardField, char attributeInitial) {
+    private static int getIntegerAttributeValues(char cardField) {
         int value = 0;
 
-        if (attributeInitial == "R") {
-
-            switch (cardField) {
-                case "Ace" -> value = 1;
-                case "2" -> value = 2;
-                case "3" -> value = 3;
-                case "4" -> value = 4;
-                case "5" -> value = 5;
-                case "6" -> value = 6;
-                case "7" -> value = 7;
-                case "8" -> value = 8;
-                case "9" -> value = 9;
-                case "10" -> value = 10;
-                case "Jack" -> value = 11;
-                case "Queen" -> value = 12;
-                case "King" -> value = 13;
-            }
-
-        } else if (attributeInitial == "S") {
-
-            switch (cardField) {
-                case "Clubs" -> value = 1;
-                case "Hearts" -> value = 2;
-                case "Spades" -> value = 3;
-                case "Diamonds" -> value = 4;
-            }
-
+        switch (cardField) {
+            /* Suits */
+            case 'C' -> value = 1;      // Clubs
+            case 'D' -> value = 2;      // Diamonds
+            case 'H' -> value = 3;      // Hearts
+            case 'S' -> value = 4;      // Spades
+            /* Ranks */
+            case 'A' -> value = 1;      // 1
+            case '2' -> value = 2;      // 2
+            case '3' -> value = 3;      // 3
+            case '4' -> value = 4;      // 4
+            case '5' -> value = 5;      // 5
+            case '6' -> value = 6;      // 6
+            case '7' -> value = 7;      // 7
+            case '8' -> value = 8;      // 8
+            case '9' -> value = 9;      // 9
+            case 'T' -> value = 10;     // 10
+            case 'J' -> value = 11;     // Jack
+            case 'Q' -> value = 12;     // Queen
+            case 'K' -> value = 13;     // King
         }
 
         return value;
@@ -61,16 +54,18 @@ public class Card {
         int[] suitValues = new int[2];      // The values used to determine the "correct" order of the suits (as determined by me)
 
         /* There are 13 ranks (Ace, 2, 3, ..., 10, Jack, Queen, and King) */
-        rankValues[0] = firstCard.getIntegerAttributeValues(firstCard.rank, 'R');
-        rankValues[1] = secondCard.getIntegerAttributeValues(secondCard.rank, 'R');
+        rankValues[0] = getIntegerAttributeValues(firstCard.rank);
+        rankValues[1] = getIntegerAttributeValues(secondCard.rank);
 
         /* There are 4 suits (Clubs, Hearts, Spades, and Diamonds) */
-        suitValues[0] = firstCard.getIntegerAttributeValues(firstCard.suit, 'S');
-        suitValues[1] = secondCard.getIntegerAttributeValues(secondCard.suit, 'S');      
+        suitValues[0] = getIntegerAttributeValues(firstCard.suit, 'S');
+        suitValues[1] = getIntegerAttributeValues(secondCard.suit, 'S');      
 
         boolean firstCardIsValid = rankValues[0] != 0 && suitValues[0] != 0;
         boolean secondCardIsValid = suitValues[0] != 0 && suitValues[1] != 0;
 
+        /* Validates the two cards in the first level of scope. Compares the value of the suits in the second scope. And if the suits are equal, 
+        compares the value of the ranks in the final scope. */
         if (!secondCardIsValid) {
 
             betterCard = firstCard;
@@ -109,9 +104,9 @@ public class Card {
     }
 
     public String toString() {
-        getRank();
-
-
+        char[] cardCharacters = {rank, suit};
+        String cardString = new String(cardCharacters);
+        return cardString;
     }
 
 
