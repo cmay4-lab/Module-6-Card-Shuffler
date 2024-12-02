@@ -1,0 +1,98 @@
+public class Card {
+    private String rank;    // The card's rank from ace to king
+    private String suit;    // The card's suit (clubs, hearts, diamonds, spades)
+
+    public Card() {
+        rank = "";
+        suit = "";
+    }
+
+    public Card(String cardRank, String cardSuit) {
+        rank = cardRank;
+        suit = cardSuit;
+    }
+
+    public static Card compare(Card firstCard, Card secondCard) {
+        Card betterCard;                    // The card that is more "valuable"
+        int[] rankValues = new int[2];      // The values used to determine the "correct" order of the ranks (as determined by me)
+        int[] suitValues = new int[2];      // The values used to determine the "correct" order of the suits (as determined by me)
+
+        /* There are 13 ranks (Ace, 2, 3, ..., 10, Jack, Queen, and King) */
+        switch (firstCard.rank) {
+            case "Ace" -> rankValues[0] = 1;
+            case "2" -> rankValues[0] = 2;
+            case "3" -> rankValues[0] = 3;
+            case "4" -> rankValues[0] = 4;
+            case "5" -> rankValues[0] = 5;
+            case "6" -> rankValues[0] = 6;
+            case "7" -> rankValues[0] = 7;
+            case "8" -> rankValues[0] = 8;
+            case "9" -> rankValues[0] = 9;
+            case "10" -> rankValues[0] = 10;
+            case "Jack" -> rankValues[0] = 11;
+            case "Queen" -> rankValues[0] = 11;
+            case "King" -> rankValues[0] = 11;
+            default -> rankValues[0] = 0;
+        }
+
+        switch (secondCard.rank) {
+            case "Ace" -> rankValues[1] = 1;
+            case "2" -> rankValues[1] = 2;
+            case "3" -> rankValues[1] = 3;
+            case "4" -> rankValues[1] = 4;
+            case "5" -> rankValues[1] = 5;
+            case "6" -> rankValues[1] = 6;
+            case "7" -> rankValues[1] = 7;
+            case "8" -> rankValues[1] = 8;
+            case "9" -> rankValues[1] = 9;
+            case "10" -> rankValues[1] = 10;
+            case "Jack" -> rankValues[1] = 11;
+            case "Queen" -> rankValues[1] = 11;
+            case "King" -> rankValues[1] = 11;
+            default -> rankValues[1] = 0;
+        }
+
+        /* There are 4 suits (Clubs, Hearts, Spades, and Diamonds) */
+        switch (firstCard.suit) {
+            case "Clubs" -> suitValues[0] = 1;
+            case "Hearts" -> suitValues[0] = 2;
+            case "Spades" -> suitValues[0] = 3;
+            case "Diamonds" -> suitValues[0] = 4;
+            default -> suitValues[0] = 0;
+        }
+
+        switch (secondCard.suit) {
+            case "Clubs" -> suitValues[1] = 1;
+            case "Hearts" -> suitValues[1] = 2;
+            case "Spades" -> suitValues[1] = 3;
+            case "Diamonds" -> suitValues[1] = 4;
+            default -> suitValues[1] = 0;
+        }
+
+        boolean firstCardIsValid = rankValues[0] != 0 && suitValues[0] != 0;
+        boolean secondCardIsValid = suitValues[0] != 0 && suitValues[1] != 0;
+
+        if (rankValuesAreValid && suitValuesAreValid) {
+
+            if (rankValues[0] >= rankValues[1]) {
+
+
+            }
+
+
+        }
+
+        
+
+    }
+
+    public String toString() {
+
+
+
+    }
+
+
+
+
+}
