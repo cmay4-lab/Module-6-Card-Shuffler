@@ -1,8 +1,6 @@
 import java.util.Random;
 
 public class Deck {
-    
-
     private static final int STANDARD_DECK_SIZE = 52;       // Hardcoded to be a mutiple of 13
     private Card[] cards;                                   // Array of cards
 
@@ -139,9 +137,20 @@ public class Deck {
     
     }
 
-    public void toStringDeck() {
+    public String toStringDeck() {
 
-        
+        String deckString = "[";
+        Card card;
+
+        for (int i = 0; i < (STANDARD_DECK_SIZE - 1); i++) {
+            card = cards[i];
+            deckString += (card.toStringCard() + ", ");
+        }
+
+        card = cards[STANDARD_DECK_SIZE - 1];
+        deckString += (card.toStringCard() + "]");
+
+        return deckString;
 
     }
 }
