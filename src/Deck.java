@@ -10,8 +10,15 @@ public class Deck {
      */
     public Deck() {
         cards = new Card[STANDARD_DECK_SIZE];
+        for (int i = 0; i < STANDARD_DECK_SIZE; i++) {
+            cards[i] = new Card();
+        }
     }
 
+    /**
+     * Fills the deck, turning it into a standard 52-card deck.
+     * 
+     */
     public void fill() {
 
         char[] orderedRanks = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
@@ -40,6 +47,10 @@ public class Deck {
 
     }
 
+    /**
+     * Shuffles the given deck.
+     * 
+     */
     public void shuffle() {
 
         Card[] tempCards = new Card[STANDARD_DECK_SIZE];
@@ -61,9 +72,17 @@ public class Deck {
 
                 int tempRandomIndex;
                 int tempCount = 1;
+                boolean tempRamdomIndexIsValid = true;
 
                 do { 
                     tempRandomIndex = randomNumGen.nextInt(STANDARD_DECK_SIZE);
+                    
+                    for (int j = 0; j < STANDARD_DECK_SIZE; j++) {
+                        if (completedIndexes[j] == tempRandomIndex) {
+                            tempRamdomIndexIsValid = false;
+                        }
+                    }
+
 
                     if (randomIndex < 51) {
                         randomIndex++;
@@ -73,7 +92,7 @@ public class Deck {
 
                     tempCount++;
 
-                } while (completedIndexes[randomIndex] == randomIndex && tempCount < 52);
+                } while ((completedIndexes[randomIndex] == randomIndex && tempCount < 52) || !tempRamdomIndexIsValid);
 
                 if (tempCount >= 52) {
                     randomIndex = -1;
@@ -137,6 +156,12 @@ public class Deck {
     
     }
 
+    /**
+     * Takes the rank and suit of all the cards in the deck, stringify their initals, concating them, 
+     * additionally concating square brackets around the string and commas the sides of the elements. 
+     * 
+     * @return String
+     */
     public String toStringDeck() {
 
         String deckString = "[";

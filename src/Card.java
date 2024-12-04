@@ -2,24 +2,51 @@ public class Card {
     private char rank;    // The card's rank from ace to king
     private char suit;    // The card's suit (clubs, diamonds, hearts, spades)
 
+    /**
+     * Constructs a new valueless card.
+     * 
+     */
     public Card() {
         rank = '0';
         suit = '0';
     }
 
+    /**
+     * Constructs a new card based on two parameters: its rank and suit.
+     * 
+     * @param cardRank
+     * @param cardSuit
+     */
     public Card(char cardRank, char cardSuit) {
         rank = cardRank;
         suit = cardSuit;
     }
 
+    /**
+     * Returns the rank of the given card.
+     * 
+     * @return Card Rank
+     */
     public char getRank() {
         return rank;
     }
 
+    /**
+     * Returns the suit of the given card.
+     * 
+     * @return Card Suit
+     */
     public char getSuit() {
         return suit;
     }
 
+    /**
+     * Is used as a background method within the comparison method. 
+     * It returns integer values that can be used to more conhisistently and easily compare two card values. 
+     * 
+     * @param cardField
+     * @return Integer
+     */
     private static int getIntegerAttributeValues(char cardField) {
         int value = 0;
 
@@ -48,6 +75,13 @@ public class Card {
         return value;
     }
 
+    /**
+     * Compares the two given card parameters, through measuring the "value" placed by the layed out card hierarchy.
+     * 
+     * @param firstCard
+     * @param secondCard
+     * @return Card
+     */
     public static Card compare(Card firstCard, Card secondCard) {
         Card betterCard;                    // The card that is more "valuable"
         int[] rankValues = new int[2];      // The values used to determine the "correct" order of the ranks (as determined by me)
@@ -104,6 +138,11 @@ public class Card {
 
     }
 
+    /**
+     * Stringifies the given card.
+     * 
+     * @return String
+     */
     public String toStringCard() {
         char[] cardCharacters = {rank, suit};
         String cardString = new String(cardCharacters);

@@ -20,12 +20,12 @@ public class Main {
     private static void printFill(Deck cardDeck) {
         System.out.println();
 
-        System.out.println("Before...");
+        System.out.println("Before filling deck...");
         System.out.println(cardDeck.toStringDeck());
 
         cardDeck.fill();
 
-        System.out.println("After...");
+        System.out.println("After filling deck...");
         System.out.println(cardDeck.toStringDeck());
 
         System.out.println();
@@ -34,12 +34,12 @@ public class Main {
     private static void printShuffle(Deck cardDeck) {
         System.out.println();
         
-        System.out.println("Before...");
+        System.out.println("Before shuffling...");
         System.out.println(cardDeck.toStringDeck());
 
         cardDeck.shuffle();
 
-        System.out.println("After...");
+        System.out.println("After shuffling...");
         System.out.println(cardDeck.toStringDeck());
 
         System.out.println();
